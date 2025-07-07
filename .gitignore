@@ -1,2 +1,5 @@
 node_modules
 .dockerignore
+.terraform
+terraform.tfstate.d
+.terraform.lock.hcl
