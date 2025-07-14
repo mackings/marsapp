@@ -1,0 +1,3 @@
+name: mypipes
+on: push
+runs
