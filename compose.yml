@@ -1,0 +1,18 @@
+version: "1"
+services:
+  frontend :
+    build: ./motiv_fe
+    container_name: motiv_fe
+    image: motiv_fe:v1
+    ports:
+      - 3000:80
+    depends_on :
+      - backend
+
+  backend :
+     build : ./motiv_be
+     container_name: motiv_be
+     image : motiv_be:v1
+     ports:
+       - 5000:5000
+
