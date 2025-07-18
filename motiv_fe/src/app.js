@@ -76,15 +76,29 @@ const Button = styled.button`
 export default function App() {
   const [quote, setQuote] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchQuote = async () => {
     setLoading(true);
+    setError(null);
     try {
-      const res = await fetch('http://motivbe:5000/quote');
+      // Using relative path that will be proxied by Nginx
+      const res = await fetch('/api/quote', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`);
+      }
+      
       const data = await res.json();
       setQuote(data.quote);
     } catch (error) {
-      setQuote('Oops, something went wrong. Please try again.');
+      console.error('Failed to fetch quote:', error);
+      setError('Oops, something went wrong. Please try again.');
+      setQuote(''); // Clear previous quote on error
     } finally {
       setLoading(false);
     }
@@ -97,7 +111,10 @@ export default function App() {
   return (
     <Container>
       <Title>🌟 Motivation App 🌟</Title>
-      <QuoteText>{loading ? 'Loading...' : quote}</QuoteText>
+      {error && <ErrorText>{error}</ErrorText>}
+      <QuoteText>
+        {loading ? 'Loading inspiring quote...' : quote || 'No quote available'}
+      </QuoteText>
       <Button onClick={fetchQuote} disabled={loading}>
         {loading ? 'Loading...' : 'Get New Quote'}
       </Button>
