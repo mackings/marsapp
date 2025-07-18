@@ -80,7 +80,7 @@ export default function App() {
   const fetchQuote = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/quote');
+      const res = await fetch('http://motivbe:5000/quote');
       const data = await res.json();
       setQuote(data.quote);
     } catch (error) {

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motivfe
+spec:
+  selector:
+    matchLabels:
+      app: motivfe
+
+  template:
+    metadata:
+      labels:
+        app: motivfe
+    spec:
+      containers:
+      - name: motivfe
+        image: mackingsley/motiv_fe:v2
+        env:
+        - name: API_BASE_URL
+          value: "http://motivbe:5000/api"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

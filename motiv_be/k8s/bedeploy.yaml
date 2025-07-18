@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motivbe   
+spec:
+  selector:
+    matchLabels:
+      app: motivbe
+  template:
+    metadata:
+      labels:
+        app: motivbe
+    spec:
+      containers:  
+      - name: motivbe
+        image: mackingsley/motiv_be:v2
+        ports:
+        - containerPort: 5000

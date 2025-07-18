@@ -9,6 +9,7 @@ RUN npm run build
 # Serve phase
 FROM nginx:alpine
 COPY --from=build /motiv_fe/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 
 # Optional: override default Nginx config to remove caching
