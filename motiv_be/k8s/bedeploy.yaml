@@ -13,6 +13,6 @@ spec:
     spec:
       containers:  
       - name: motivbe
-        image: mackingsley/motiv_be:v2
+        image: mackingsley/motiv_be:v1
         ports:
         - containerPort: 5000

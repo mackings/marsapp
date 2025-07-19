@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: motivfe
-        image: mackingsley/motiv_fe:v2
+        image: mackingsley/motiv_fe:v1
         env:
         - name: API_BASE_URL
           value: "http://motivbe:5000/quote"
