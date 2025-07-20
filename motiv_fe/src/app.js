@@ -83,7 +83,7 @@ export default function App() {
     setError(null);
     try {
       // Using relative path that will be proxied by Nginx
-      const res = await fetch('/api/quote', {
+      const res = await fetch('/quote', {
         headers: {
           'Content-Type': 'application/json',
         },

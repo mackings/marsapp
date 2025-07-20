@@ -9,6 +9,13 @@ spec:
     - host: motiv.local
       http:
         paths:
+          - path: /quote
+            pathType: Prefix
+            backend:
+              service:
+                name: motivbe
+                port:
+                  number: 5000
           - path: /
             pathType: Prefix
             backend:
@@ -16,10 +23,3 @@ spec:
                 name: motivfe
                 port:
                   number: 80
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: motivbe
-                port:
-                  number: 5000
