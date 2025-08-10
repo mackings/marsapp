@@ -43,3 +43,5 @@ resource "aws_route_table_association" "dev_routeass" {
   route_table_id = aws_route_table.dev_routetable.id
 
 }
+
+
